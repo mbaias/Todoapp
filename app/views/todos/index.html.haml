@@ -1,0 +1,28 @@
+= render "layouts/header"
+/ .container
+/ 	.rows
+/ 		.col-sm-6
+/ 			.well
+/ 				- @todos.each do |td|
+/ 					.td-list.clearfix
+/ 						.td-title
+/ 							%b= td.title
+/ 						.td-check.pull-right
+/ 							= check_box("Todo", td.id , {checked: true})
+/ 						.td-body
+/ 							Author:
+/ 							%em= td.body
+/ 						.td-image
+/ 							= image_tag td.image.url
+/ 						.td-btn.pull-right
+/ 							= link_to todo_path(td.id), method: :delete do
+/ 								= fa_icon "trash 2x"
+
+/ = render 'form'
+= link_to "New ToDo", new_todo_path, id: "new_link", remote: true, class: "btn btn-success"
+%h2 Incomplete Todos
+.todos#incomplete_todos
+  = render @incomplete_todos
+%h2 Comlpete Todos
+.todos#complete_todos
+  = render @complete_todos
