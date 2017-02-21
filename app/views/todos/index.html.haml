@@ -18,11 +18,14 @@
 / 							= link_to todo_path(td.id), method: :delete do
 / 								= fa_icon "trash 2x"
 
-/ = render 'form'
-= link_to "New ToDo", new_todo_path, id: "new_link", remote: true, class: "btn btn-success"
-%h2 Incomplete Todos
-.todos#incomplete_todos
-  = render @incomplete_todos
-%h2 Comlpete Todos
-.todos#complete_todos
-  = render @complete_todos
+.row
+	.col-md-4
+		= render 'form'
+	.col-md-4
+		%h2 Incomplete Todos
+		.todos#incomplete_todos
+			= render "todo", obj: @incomplete_todos
+	.col-md-4
+		%h2 Comlpete Todos
+		.todos#complete_todos
+			= render "todo", obj: @complete_todos

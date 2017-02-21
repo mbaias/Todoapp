@@ -1,4 +1,8 @@
-= form_for todo, remote: true do |f|
-  = f.check_box :completed
-  = f.label :completed, todo.title
-  = link_to "(remove)", todo, method: :delete, data: {confirm: "Are you sure?"}, remote: true
+- obj.each do |td|
+  = form_for td, remote: true do |f|
+    = f.check_box :completed
+    = f.submit "Update"
+    = f.label :completed, td.title
+    %span.delete 
+      = link_to td, method: :delete, data: {confirm: "Are you sure?"}, remote: true do 
+        = fa_icon "trash 2x fw"

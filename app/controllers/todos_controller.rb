@@ -5,16 +5,15 @@ class TodosController < ApplicationController
 
 	def create
 		@todo = current_user.todos.build(todo_params)
-		if @todo.save 
-			flash[:notice] = "You have created a todo"
-			redirect_to todos_path
-		else
-			render :new
-		end
 
-		respond_to do |f|
-			f.html {redirect_to todos_path}
-			f.js
+		respond_to do |f| 
+			if @todo.save
+				f.html {redirect_to todos_path}
+				f.js {redirect_to todos_path}
+			else
+				f.html {render :new}
+				f.js {render :new}
+			end
 		end
 
 	end
@@ -22,6 +21,7 @@ class TodosController < ApplicationController
 	def index
 		@incomplete_todos = Todo.where(completed: false)
 		@complete_todos = Todo.where(completed: true)
+		@todo = Todo.new
 	end
 
 	def destroy

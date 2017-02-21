@@ -4,30 +4,27 @@
     - @todo.errors.full_messages.each do |msg|
       %li
         = msg
-
-.row
-  .col-sm-offset-4.col-sm-4
-    .well
-      %h2{:align => "center"} Create your Todo
-      = form_for(@todo, remote: true, :html => {:multipart => true, class: "form-horizontal", role: "form"}) do |f|
-        .form-group
-          .control-label.col-sm-2
-            = f.hidden_field :user_id, value: @todo
-        .form-group
-          .control-label.col-sm-2
-            = f.label :title
-          .col-sm-8
-            = f.text_field :title, class: "form-control", placeholder: "Title of your todo", autofocus: true
-        .form-group
-          .control-label.col-sm-2
-            = f.label :body
-          .col-sm-8
-            = f.text_field :body, class: "form-control", placeholder: "What do you need to do"
-        .form-group
-          .control-label.col-sm-2
-            = f.label :image
-          .col-sm-8
-            = f.file_field :image      
-        .form-group
-          .col-sm-offset-2.col-sm-10
-            = f.button class: "btn btn-primary btn-sm", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Signing in..."}
+.well
+  %h2{:align => "center"} Create your Todo
+  = form_for(@todo, remote: true, :html => {:multipart => true, class: "form-horizontal", role: "form"}) do |f|
+    .form-group
+      .control-label.col-sm-2
+        = f.hidden_field :user_id, value: @todo
+    .form-group
+      .control-label.col-sm-2
+        = f.label :title
+      .col-sm-8
+        = f.text_field :title, class: "form-control", placeholder: "Title of your todo", autofocus: true
+    .form-group
+      .control-label.col-sm-2
+        = f.label :body
+      .col-sm-8
+        = f.text_field :body, class: "form-control", placeholder: "What do you need to do"
+    .form-group
+      .control-label.col-sm-2
+        = f.label :image
+      .col-sm-8
+        = f.file_field :image      
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = f.button class: "btn btn-primary btn-sm", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Signing in..."}
